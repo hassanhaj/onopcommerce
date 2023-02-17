@@ -542,6 +542,10 @@ namespace Nop.Core.Domain.Catalog
         public DateTime UpdatedOnUtc { get; set; }
 
         /// <summary>
+        /// Gets or sets SellingPoints, shows on product box
+        /// </summary>
+        public string SellingPoints { get; set; }
+        /// <summary>
         /// Gets or sets the product type
         /// </summary>
         public ProductType ProductType

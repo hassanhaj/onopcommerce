@@ -76,7 +76,7 @@ namespace Nop.Web.Factories
         private readonly OrderSettings _orderSettings;
         private readonly SeoSettings _seoSettings;
         private readonly ShippingSettings _shippingSettings;
-        private readonly VendorSettings _vendorSettings;        
+        private readonly VendorSettings _vendorSettings;
 
         #endregion
 
@@ -155,7 +155,7 @@ namespace Nop.Web.Factories
             _seoSettings = seoSettings;
             _shippingSettings = shippingSettings;
             _vendorSettings = vendorSettings;
-            
+
         }
 
         #endregion
@@ -236,7 +236,7 @@ namespace Nop.Web.Factories
                 productReview = await _staticCacheManager.GetAsync(cacheKey, async () =>
                 {
                     var productReviews = await _productService.GetAllProductReviewsAsync(productId: product.Id, approved: true, storeId: (await _storeContext.GetCurrentStoreAsync()).Id);
-                    
+
                     return new ProductReviewOverviewModel
                     {
                         RatingSum = productReviews.Sum(pr => pr.Rating),
@@ -515,7 +515,7 @@ namespace Nop.Web.Factories
             var pictureSize = productThumbPictureSize ?? _mediaSettings.ProductThumbPictureSize;
 
             //prepare picture model
-            var cacheKey = _staticCacheManager.PrepareKeyForDefaultCache(NopModelCacheDefaults.ProductDefaultPictureModelKey, 
+            var cacheKey = _staticCacheManager.PrepareKeyForDefaultCache(NopModelCacheDefaults.ProductDefaultPictureModelKey,
                 product, pictureSize, true, await _workContext.GetWorkingLanguageAsync(), _webHelper.IsCurrentConnectionSecured(),
                 await _storeContext.GetCurrentStoreAsync());
 
@@ -1030,14 +1030,14 @@ namespace Nop.Web.Factories
                         await _workContext.GetCurrentCustomerAsync(), decimal.Zero, _catalogSettings.DisplayTierPricesWithDiscounts,
                         tierPrice.Quantity)).Item1)).price;
 
-                       var price = await _currencyService.ConvertFromPrimaryStoreCurrencyAsync(priceBase, await _workContext.GetWorkingCurrencyAsync());
+                    var price = await _currencyService.ConvertFromPrimaryStoreCurrencyAsync(priceBase, await _workContext.GetWorkingCurrencyAsync());
 
-                       return new ProductDetailsModel.TierPriceModel
-                       {
-                           Quantity = tierPrice.Quantity,
-                           Price = await _priceFormatter.FormatPriceAsync(price, false, false)
-                       };
-                   }).ToListAsync();
+                    return new ProductDetailsModel.TierPriceModel
+                    {
+                        Quantity = tierPrice.Quantity,
+                        Price = await _priceFormatter.FormatPriceAsync(price, false, false)
+                    };
+                }).ToListAsync();
 
             return model;
         }
@@ -1093,7 +1093,7 @@ namespace Nop.Web.Factories
 
             //prepare picture models
             var productPicturesCacheKey = _staticCacheManager.PrepareKeyForDefaultCache(NopModelCacheDefaults.ProductDetailsPicturesModelKey
-                , product, defaultPictureSize, isAssociatedProduct, 
+                , product, defaultPictureSize, isAssociatedProduct,
                 await _workContext.GetWorkingLanguageAsync(), _webHelper.IsCurrentConnectionSecured(), await _storeContext.GetCurrentStoreAsync());
             var cachedPictures = await _staticCacheManager.GetAsync(productPicturesCacheKey, async () =>
             {
@@ -1122,7 +1122,7 @@ namespace Nop.Web.Factories
 
                 //all pictures
                 var pictureModels = new List<PictureModel>();
-                for (var i = 0; i < pictures.Count(); i++ )
+                for (var i = 0; i < pictures.Count(); i++)
                 {
                     var picture = pictures[i];
 
@@ -1218,7 +1218,8 @@ namespace Nop.Web.Factories
                     ProductType = product.ProductType,
                     MarkAsNew = product.MarkAsNew &&
                         (!product.MarkAsNewStartDateTimeUtc.HasValue || product.MarkAsNewStartDateTimeUtc.Value < DateTime.UtcNow) &&
-                        (!product.MarkAsNewEndDateTimeUtc.HasValue || product.MarkAsNewEndDateTimeUtc.Value > DateTime.UtcNow)
+                        (!product.MarkAsNewEndDateTimeUtc.HasValue || product.MarkAsNewEndDateTimeUtc.Value > DateTime.UtcNow),
+                    SellingPoints = product.SellingPoints
                 };
 
                 //price
@@ -1569,7 +1570,7 @@ namespace Nop.Web.Factories
             model.ProductSeName = await _urlRecordService.GetSeNameAsync(product);
 
             var productReviews = (await _productService.GetAllProductReviewsAsync(
-                approved: true, 
+                approved: true,
                 productId: product.Id,
                 storeId: _catalogSettings.ShowProductReviewsPerStore ? (await _storeContext.GetCurrentStoreAsync()).Id : 0)).AsEnumerable();
 

@@ -231,6 +231,15 @@
                 <span asp-validation-for="@Model.Locales[item].FullDescription"></span>
             </div>
         </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <nop-label asp-for="@Model.Locales[item].SellingPoints" />
+            </div>
+            <div class="col-md-9">
+                <nop-editor asp-for="@Model.Locales[item].SellingPoints" asp-template="RichEditor" />
+                <span asp-validation-for="@Model.Locales[item].SellingPoints"></span>
+            </div>
+        </div>
         <input type="hidden" asp-for="@Model.Locales[item].LanguageId" />
     </div>
     ,
@@ -260,6 +269,15 @@
             <div class="col-md-9">
                 <nop-editor asp-for="FullDescription" asp-template="RichEditor" />
                 <span asp-validation-for="FullDescription"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <nop-label asp-for="SellingPoints" />
+            </div>
+            <div class="col-md-9">
+                <nop-editor asp-for="SellingPoints" asp-template="RichEditor" />
+                        <span asp-validation-for="SellingPoints"></span>
             </div>
         </div>
         </div>))

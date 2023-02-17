@@ -1777,7 +1777,7 @@ label, label + * {
 }
 
 .item-box .prices {
-  margin: 0 0 10px;
+  margin: 0 0 3px;
   overflow: hidden;
 }
 
@@ -2293,7 +2293,7 @@ label, label + * {
 
 .overview .prices,
 .variant-overview .prices {
-  margin: 0 0 10px;
+  margin: 0 0 3px;
   overflow: hidden;
 }
 
@@ -8751,4 +8751,13 @@ pre {
     width: 930px;
     max-width: 100%;
   }
+}
+
+.sellingpoints {
+  min-height: 35px;
+  padding-bottom: 4 px;
+  padding-left: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

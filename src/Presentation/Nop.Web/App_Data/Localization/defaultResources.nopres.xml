@@ -3279,6 +3279,9 @@
   <LocaleResource Name="Admin.Catalog.Products.Fields.SeName">
     <Value>Search engine friendly page name</Value>
   </LocaleResource>
+  <LocaleResource Name="Admin.Catalog.Products.Fields.SellingPoints">
+    <Value>Selling Points</Value>
+  </LocaleResource>
   <LocaleResource Name="Admin.Catalog.Products.Fields.SeName.Hint">
     <Value>Set a search engine friendly page name e.g. 'the-best-product' to make your page URL 'http://www.yourStore.com/the-best-product'. Leave empty to generate it automatically based on the name of the product.</Value>
   </LocaleResource>
